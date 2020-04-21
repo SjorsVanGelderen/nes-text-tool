@@ -1,0 +1,7 @@
+Hi this is a really long line that will not fit on the NES screen anyway
+Here is a line
+break example
+
+OK
+
+bye

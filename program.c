@@ -3,13 +3,12 @@
 #include <stdlib.h>
 #include <stdio.h>
 
-int BUFFER_SIZE = 512;
-
-char* helpText = "nes-text-tool\n\n"
-    "Example usage: nes-text-tool text-box-width chr-text-offset in-text-file out-chr-file";
-
 int main(int argc, char* argv[])
 {
+    const int BUFFER_SIZE = 512;
+    const char* HELP_TEXT = "nes-text-tool\n\n"
+        "Example usage: nes-text-tool text-box-width chr-text-offset in-text-file out-chr-file";
+    
     int textBoxWidth;
     int chrTextOffset;
     char* inTextPath;
@@ -22,7 +21,7 @@ int main(int argc, char* argv[])
     
     if(argc != 5)
     {
-        puts(helpText);
+        puts(HELP_TEXT);
         return 0;
     }
 

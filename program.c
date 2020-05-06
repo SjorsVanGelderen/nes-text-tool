@@ -3,6 +3,8 @@
 #include <stdlib.h>
 #include <stdio.h>
 
+int BUFFER_SIZE = 512;
+
 char* helpText = "nes-text-tool\n\n"
     "Example usage: nes-text-tool text-box-width chr-text-offset in-text-file out-chr-file";
 
@@ -12,7 +14,7 @@ int main(int argc, char* argv[])
     int chrTextOffset;
     char* inTextPath;
     char* outChrPath;
-    char buffer[512];
+    char buffer[BUFFER_SIZE];
     char c;
     int i;
     FILE* inTextFile;
@@ -44,7 +46,7 @@ int main(int argc, char* argv[])
     }
 
     i = 0;
-    while(1)
+    while(i < BUFFER_SIZE)
     {
         c = fgetc(inTextFile);
         if(c == EOF)
@@ -53,7 +55,9 @@ int main(int argc, char* argv[])
             break;
         }
 
-        fputc(c + chrTextOffset + 2, outChrFile);
+	// + 2 because of special characters
+	// - 97 because of the ASCII offset
+        fputc(c + chrTextOffset - 95, outChrFile);
 
         i++;
         if(i == textBoxWidth)

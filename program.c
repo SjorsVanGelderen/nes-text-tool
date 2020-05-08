@@ -54,9 +54,27 @@ int main(int argc, char* argv[])
             break;
         }
 
-	// + 2 because of special characters
+	if(c == '\n')
+	{
+	    fputc(1, outChrFile); // Line break
+            i = 0;
+            continue;
+        }
+
+	if(c == '\r')
+        {
+            continue;
+        }
+	
+	if(c == ' ')
+	{
+	    fputc(2, outChrFile); // Whitespace
+	    continue;
+	}
+	
+	// + 3 because of special characters
 	// - 97 because of the ASCII offset
-        fputc(c + chrTextOffset - 95, outChrFile);
+        fputc(c + chrTextOffset - 94, outChrFile);
 
         i++;
         if(i == textBoxWidth)
